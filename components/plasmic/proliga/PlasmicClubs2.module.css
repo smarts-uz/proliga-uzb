@@ -1,0 +1,32 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  min-width: 0;
+}
+.freeBox {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  background: none;
+  padding: 8px;
+}
+.img {
+  position: relative;
+  object-fit: fill;
+  max-width: 100%;
+  cursor: pointer;
+}
+.img > picture > img {
+  object-fit: fill;
+}
