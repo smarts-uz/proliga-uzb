@@ -42,10 +42,6 @@
   justify-self: flex-start;
   padding: 8px;
 }
-.clubs2:global(.__wab_instance) {
-  max-width: 100%;
-  position: relative;
-}
 .text {
   position: relative;
   width: 100%;

@@ -60,7 +60,6 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import Navbar from "../../Navbar"; // plasmic-import: TKT8XnZtrLZi/component
-import Clubs2 from "../../Clubs2"; // plasmic-import: 3EueAFP_3sEI/component
 import BreakinNewsCards from "../../BreakinNewsCards"; // plasmic-import: cgwtBVaX8unu/component
 import Footer from "../../Footer"; // plasmic-import: kIdovXGtWiEz/component
 
@@ -86,7 +85,6 @@ export type PlasmicBreakinNews__OverridesType = {
   root?: Flex__<"div">;
   navbar?: Flex__<typeof Navbar>;
   freeBox?: Flex__<"div">;
-  clubs2?: Flex__<typeof Clubs2>;
   text?: Flex__<"div">;
   footer?: Flex__<typeof Footer>;
 };
@@ -161,13 +159,8 @@ function PlasmicBreakinNews__RenderFunc(props: {
             data-plasmic-name={"freeBox"}
             data-plasmic-override={overrides.freeBox}
             className={classNames(projectcss.all, sty.freeBox)}
-          >
-            <Clubs2
-              data-plasmic-name={"clubs2"}
-              data-plasmic-override={overrides.clubs2}
-              className={classNames("__wab_instance", sty.clubs2)}
-            />
-          </div>
+          />
+
           <div
             data-plasmic-name={"text"}
             data-plasmic-override={overrides.text}
@@ -279,10 +272,9 @@ function PlasmicBreakinNews__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "navbar", "freeBox", "clubs2", "text", "footer"],
+  root: ["root", "navbar", "freeBox", "text", "footer"],
   navbar: ["navbar"],
-  freeBox: ["freeBox", "clubs2"],
-  clubs2: ["clubs2"],
+  freeBox: ["freeBox"],
   text: ["text"],
   footer: ["footer"]
 } as const;
@@ -293,7 +285,6 @@ type NodeDefaultElementType = {
   root: "div";
   navbar: typeof Navbar;
   freeBox: "div";
-  clubs2: typeof Clubs2;
   text: "div";
   footer: typeof Footer;
 };
@@ -360,7 +351,6 @@ export const PlasmicBreakinNews = Object.assign(
     // Helper components rendering sub-elements
     navbar: makeNodeComponent("navbar"),
     freeBox: makeNodeComponent("freeBox"),
-    clubs2: makeNodeComponent("clubs2"),
     text: makeNodeComponent("text"),
     footer: makeNodeComponent("footer"),
 

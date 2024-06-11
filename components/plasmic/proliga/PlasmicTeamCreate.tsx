@@ -67,7 +67,6 @@ import {
 } from "@plasmicapp/react-web/lib/data-sources";
 
 import Navbar from "../../Navbar"; // plasmic-import: TKT8XnZtrLZi/component
-import Clubs2 from "../../Clubs2"; // plasmic-import: 3EueAFP_3sEI/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -91,8 +90,8 @@ export const PlasmicTeamCreate__ArgProps = new Array<ArgPropType>();
 export type PlasmicTeamCreate__OverridesType = {
   root?: Flex__<"div">;
   navbar?: Flex__<typeof Navbar>;
-  clubs2?: Flex__<typeof Clubs2>;
   img?: Flex__<typeof PlasmicImg__>;
+  text?: Flex__<"div">;
 };
 
 export interface DefaultTeamCreateProps {}
@@ -198,21 +197,6 @@ function PlasmicTeamCreate__RenderFunc(props: {
             className={classNames("__wab_instance", sty.navbar)}
           />
 
-          <Clubs2
-            data-plasmic-name={"clubs2"}
-            data-plasmic-override={overrides.clubs2}
-            className={classNames("__wab_instance", sty.clubs2)}
-          />
-
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__hGgdd
-            )}
-          >
-            {"CHOOSE YOUR TEAM"}
-          </div>
           <div className={classNames(projectcss.all, sty.freeBox__nuk3S)}>
             <div className={classNames(projectcss.all, sty.freeBox___2LZzQ)}>
               {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
@@ -380,10 +364,12 @@ function PlasmicTeamCreate__RenderFunc(props: {
                     />
 
                     <div
+                      data-plasmic-name={"text"}
+                      data-plasmic-override={overrides.text}
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text__s4CVb
+                        sty.text
                       )}
                     >
                       <React.Fragment>
@@ -414,10 +400,10 @@ function PlasmicTeamCreate__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "navbar", "clubs2", "img"],
+  root: ["root", "navbar", "img", "text"],
   navbar: ["navbar"],
-  clubs2: ["clubs2"],
-  img: ["img"]
+  img: ["img"],
+  text: ["text"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -425,8 +411,8 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   navbar: typeof Navbar;
-  clubs2: typeof Clubs2;
   img: typeof PlasmicImg__;
+  text: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -507,8 +493,8 @@ export const PlasmicTeamCreate = Object.assign(
   {
     // Helper components rendering sub-elements
     navbar: makeNodeComponent("navbar"),
-    clubs2: makeNodeComponent("clubs2"),
     img: makeNodeComponent("img"),
+    text: makeNodeComponent("text"),
 
     // Metadata about props expected for PlasmicTeamCreate
     internalVariantProps: PlasmicTeamCreate__VariantProps,

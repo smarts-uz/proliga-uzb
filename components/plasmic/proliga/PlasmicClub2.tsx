@@ -66,7 +66,6 @@ import {
 } from "@plasmicapp/react-web/lib/data-sources";
 
 import Navbar from "../../Navbar"; // plasmic-import: TKT8XnZtrLZi/component
-import Clubs2 from "../../Clubs2"; // plasmic-import: 3EueAFP_3sEI/component
 import SoccerPlaceMens from "../../SoccerPlaceMens"; // plasmic-import: w6mcybgJxhpK/component
 import Footer from "../../Footer"; // plasmic-import: kIdovXGtWiEz/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
@@ -92,7 +91,6 @@ export const PlasmicClub2__ArgProps = new Array<ArgPropType>();
 export type PlasmicClub2__OverridesType = {
   root?: Flex__<"div">;
   navbar?: Flex__<typeof Navbar>;
-  clubs2?: Flex__<typeof Clubs2>;
   columns?: Flex__<"div">;
   column?: Flex__<"div">;
   soccerPlaceMens?: Flex__<typeof SoccerPlaceMens>;
@@ -253,13 +251,6 @@ function PlasmicClub2__RenderFunc(props: {
             className={classNames("__wab_instance", sty.navbar)}
           />
 
-          <div className={classNames(projectcss.all, sty.freeBox__suDyg)}>
-            <Clubs2
-              data-plasmic-name={"clubs2"}
-              data-plasmic-override={overrides.clubs2}
-              className={classNames("__wab_instance", sty.clubs2)}
-            />
-          </div>
           <div className={classNames(projectcss.all, sty.freeBox__fbkEs)}>
             <div className={classNames(projectcss.all, sty.freeBox__pzaTu)}>
               <PlasmicImg__
@@ -452,17 +443,8 @@ function PlasmicClub2__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: [
-    "root",
-    "navbar",
-    "clubs2",
-    "columns",
-    "column",
-    "soccerPlaceMens",
-    "footer"
-  ],
+  root: ["root", "navbar", "columns", "column", "soccerPlaceMens", "footer"],
   navbar: ["navbar"],
-  clubs2: ["clubs2"],
   columns: ["columns", "column", "soccerPlaceMens"],
   column: ["column", "soccerPlaceMens"],
   soccerPlaceMens: ["soccerPlaceMens"],
@@ -474,7 +456,6 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   navbar: typeof Navbar;
-  clubs2: typeof Clubs2;
   columns: "div";
   column: "div";
   soccerPlaceMens: typeof SoccerPlaceMens;
@@ -542,7 +523,6 @@ export const PlasmicClub2 = Object.assign(
   {
     // Helper components rendering sub-elements
     navbar: makeNodeComponent("navbar"),
-    clubs2: makeNodeComponent("clubs2"),
     columns: makeNodeComponent("columns"),
     column: makeNodeComponent("column"),
     soccerPlaceMens: makeNodeComponent("soccerPlaceMens"),

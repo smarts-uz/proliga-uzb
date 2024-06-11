@@ -60,7 +60,6 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import Navbar from "../../Navbar"; // plasmic-import: TKT8XnZtrLZi/component
-import Clubs2 from "../../Clubs2"; // plasmic-import: 3EueAFP_3sEI/component
 import { AntdDropdown } from "@plasmicpkgs/antd5/skinny/registerDropdown";
 import { AntdMenuItem } from "@plasmicpkgs/antd5/skinny/registerMenu";
 import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
@@ -91,7 +90,6 @@ export const PlasmicRankings__ArgProps = new Array<ArgPropType>();
 export type PlasmicRankings__OverridesType = {
   rankings?: Flex__<"div">;
   navbar?: Flex__<typeof Navbar>;
-  clubs2?: Flex__<typeof Clubs2>;
   h4?: Flex__<"h4">;
   rankings2?: Flex__<typeof Rankings2>;
   h5?: Flex__<"h5">;
@@ -180,12 +178,6 @@ function PlasmicRankings__RenderFunc(props: {
             data-plasmic-name={"navbar"}
             data-plasmic-override={overrides.navbar}
             className={classNames("__wab_instance", sty.navbar)}
-          />
-
-          <Clubs2
-            data-plasmic-name={"clubs2"}
-            data-plasmic-override={overrides.clubs2}
-            className={classNames("__wab_instance", sty.clubs2)}
           />
 
           <div className={classNames(projectcss.all, sty.freeBox__e476J)}>
@@ -646,18 +638,8 @@ function PlasmicRankings__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  rankings: [
-    "rankings",
-    "navbar",
-    "clubs2",
-    "h4",
-    "rankings2",
-    "h5",
-    "img",
-    "footer"
-  ],
+  rankings: ["rankings", "navbar", "h4", "rankings2", "h5", "img", "footer"],
   navbar: ["navbar"],
-  clubs2: ["clubs2"],
   h4: ["h4"],
   rankings2: ["rankings2"],
   h5: ["h5"],
@@ -670,7 +652,6 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   rankings: "div";
   navbar: typeof Navbar;
-  clubs2: typeof Clubs2;
   h4: "h4";
   rankings2: typeof Rankings2;
   h5: "h5";
@@ -739,7 +720,6 @@ export const PlasmicRankings = Object.assign(
   {
     // Helper components rendering sub-elements
     navbar: makeNodeComponent("navbar"),
-    clubs2: makeNodeComponent("clubs2"),
     h4: makeNodeComponent("h4"),
     rankings2: makeNodeComponent("rankings2"),
     h5: makeNodeComponent("h5"),

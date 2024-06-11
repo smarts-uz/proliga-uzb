@@ -374,6 +374,44 @@ function PlasmicLoginAuth__RenderFunc(props: {
               data-plasmic-override={overrides.submitButton}
               className={classNames("__wab_instance", sty.submitButton)}
               color={"green"}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["updateEmailInputValue"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["emailInput", "value"]
+                        },
+                        operation: 0
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateEmailInputValue"] != null &&
+                  typeof $steps["updateEmailInputValue"] === "object" &&
+                  typeof $steps["updateEmailInputValue"].then === "function"
+                ) {
+                  $steps["updateEmailInputValue"] = await $steps[
+                    "updateEmailInputValue"
+                  ];
+                }
+              }}
             >
               {"Login"}
             </Button>
@@ -385,7 +423,7 @@ function PlasmicLoginAuth__RenderFunc(props: {
                   sty.text___8KmQv
                 )}
               >
-                {"Vostanavit"}
+                {"Don't you have an account "}
               </div>
               <div
                 className={classNames(
@@ -393,6 +431,34 @@ function PlasmicLoginAuth__RenderFunc(props: {
                   projectcss.__wab_text,
                   sty.text__xE8Xp
                 )}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["goToSignup"] = true
+                    ? (() => {
+                        const actionArgs = { destination: `/signup` };
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
+                          }
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["goToSignup"] != null &&
+                    typeof $steps["goToSignup"] === "object" &&
+                    typeof $steps["goToSignup"].then === "function"
+                  ) {
+                    $steps["goToSignup"] = await $steps["goToSignup"];
+                  }
+                }}
               >
                 {"Register?"}
               </div>

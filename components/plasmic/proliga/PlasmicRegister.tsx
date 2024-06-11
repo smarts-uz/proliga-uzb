@@ -423,7 +423,7 @@ function PlasmicRegister__RenderFunc(props: {
                   sty.text__bz1MA
                 )}
               >
-                {"Vostanavit"}
+                {"already have an account?"}
               </div>
               <div
                 className={classNames(
@@ -431,8 +431,36 @@ function PlasmicRegister__RenderFunc(props: {
                   projectcss.__wab_text,
                   sty.text__c80Gf
                 )}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["goToLogin"] = true
+                    ? (() => {
+                        const actionArgs = { destination: `/login` };
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
+                          }
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["goToLogin"] != null &&
+                    typeof $steps["goToLogin"] === "object" &&
+                    typeof $steps["goToLogin"].then === "function"
+                  ) {
+                    $steps["goToLogin"] = await $steps["goToLogin"];
+                  }
+                }}
               >
-                {"Register?"}
+                {"Login"}
               </div>
             </div>
           </Stack__>

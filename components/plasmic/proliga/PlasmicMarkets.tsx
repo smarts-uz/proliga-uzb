@@ -66,7 +66,6 @@ import {
 } from "@plasmicapp/react-web/lib/data-sources";
 
 import Navbar from "../../Navbar"; // plasmic-import: TKT8XnZtrLZi/component
-import Clubs2 from "../../Clubs2"; // plasmic-import: 3EueAFP_3sEI/component
 import Footer from "../../Footer"; // plasmic-import: kIdovXGtWiEz/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
@@ -91,7 +90,6 @@ export const PlasmicMarkets__ArgProps = new Array<ArgPropType>();
 export type PlasmicMarkets__OverridesType = {
   root?: Flex__<"div">;
   navbar?: Flex__<typeof Navbar>;
-  clubs2?: Flex__<typeof Clubs2>;
   columns?: Flex__<"div">;
   footer?: Flex__<typeof Footer>;
 };
@@ -204,13 +202,6 @@ function PlasmicMarkets__RenderFunc(props: {
             className={classNames("__wab_instance", sty.navbar)}
           />
 
-          <div className={classNames(projectcss.all, sty.freeBox__vgyTw)}>
-            <Clubs2
-              data-plasmic-name={"clubs2"}
-              data-plasmic-override={overrides.clubs2}
-              className={classNames("__wab_instance", sty.clubs2)}
-            />
-          </div>
           <div
             className={classNames(
               projectcss.all,
@@ -1083,9 +1074,8 @@ function PlasmicMarkets__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "navbar", "clubs2", "columns", "footer"],
+  root: ["root", "navbar", "columns", "footer"],
   navbar: ["navbar"],
-  clubs2: ["clubs2"],
   columns: ["columns"],
   footer: ["footer"]
 } as const;
@@ -1095,7 +1085,6 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   navbar: typeof Navbar;
-  clubs2: typeof Clubs2;
   columns: "div";
   footer: typeof Footer;
 };
@@ -1161,7 +1150,6 @@ export const PlasmicMarkets = Object.assign(
   {
     // Helper components rendering sub-elements
     navbar: makeNodeComponent("navbar"),
-    clubs2: makeNodeComponent("clubs2"),
     columns: makeNodeComponent("columns"),
     footer: makeNodeComponent("footer"),
 

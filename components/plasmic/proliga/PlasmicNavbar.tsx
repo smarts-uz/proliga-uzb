@@ -720,6 +720,43 @@ function PlasmicNavbar__RenderFunc(props: {
             }
           />
 
+          {(() => {
+            try {
+              return currentUser.isLoggedIn;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return true;
+              }
+              throw e;
+            }
+          })() ? (
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__xjOyy
+              )}
+            >
+              <React.Fragment>
+                {(() => {
+                  try {
+                    return currentUser.email;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "";
+                    }
+                    throw e;
+                  }
+                })()}
+              </React.Fragment>
+            </div>
+          ) : null}
           <Logout
             data-plasmic-name={"logout"}
             data-plasmic-override={overrides.logout}

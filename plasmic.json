@@ -1472,19 +1472,6 @@
           "componentType": "component"
         },
         {
-          "id": "3EueAFP_3sEI",
-          "name": "Clubs2",
-          "type": "managed",
-          "projectId": "tDWy3GXn2mzd9e2xUaPdmu",
-          "renderModuleFilePath": "plasmic/proliga/PlasmicClubs2.tsx",
-          "importSpec": {
-            "modulePath": "Clubs2.tsx"
-          },
-          "cssFilePath": "plasmic/proliga/PlasmicClubs2.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
           "id": "Kg9RPQ5P0NJA",
           "name": "Markets",
           "type": "managed",
@@ -1792,19 +1779,6 @@
             "modulePath": "Switch.tsx"
           },
           "cssFilePath": "plasmic/proliga/PlasmicSwitch.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
-          "id": "AYkdRE0S8ipX",
-          "name": "Clubs22",
-          "type": "managed",
-          "projectId": "tDWy3GXn2mzd9e2xUaPdmu",
-          "renderModuleFilePath": "plasmic/proliga/PlasmicClubs22.tsx",
-          "importSpec": {
-            "modulePath": "Clubs22.tsx"
-          },
-          "cssFilePath": "plasmic/proliga/PlasmicClubs22.module.css",
           "scheme": "blackbox",
           "componentType": "component"
         },

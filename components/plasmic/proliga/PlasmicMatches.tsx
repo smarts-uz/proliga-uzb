@@ -66,7 +66,6 @@ import {
 } from "@plasmicapp/react-web/lib/data-sources";
 
 import Navbar from "../../Navbar"; // plasmic-import: TKT8XnZtrLZi/component
-import Clubs2 from "../../Clubs2"; // plasmic-import: 3EueAFP_3sEI/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -90,7 +89,6 @@ export const PlasmicMatches__ArgProps = new Array<ArgPropType>();
 export type PlasmicMatches__OverridesType = {
   root?: Flex__<"div">;
   navbar?: Flex__<typeof Navbar>;
-  clubs2?: Flex__<typeof Clubs2>;
   h2?: Flex__<"h2">;
   mainStak?: Flex__<"div">;
   leftStack?: Flex__<"div">;
@@ -198,12 +196,6 @@ function PlasmicMatches__RenderFunc(props: {
             data-plasmic-name={"navbar"}
             data-plasmic-override={overrides.navbar}
             className={classNames("__wab_instance", sty.navbar)}
-          />
-
-          <Clubs2
-            data-plasmic-name={"clubs2"}
-            data-plasmic-override={overrides.clubs2}
-            className={classNames("__wab_instance", sty.clubs2)}
           />
 
           <div className={classNames(projectcss.all, sty.freeBox__d7DLf)}>
@@ -425,7 +417,6 @@ const PlasmicDescendants = {
   root: [
     "root",
     "navbar",
-    "clubs2",
     "h2",
     "mainStak",
     "leftStack",
@@ -434,7 +425,6 @@ const PlasmicDescendants = {
     "matchStak2"
   ],
   navbar: ["navbar"],
-  clubs2: ["clubs2"],
   h2: ["h2"],
   mainStak: ["mainStak", "leftStack", "matchStak", "rightStack", "matchStak2"],
   leftStack: ["leftStack", "matchStak"],
@@ -448,7 +438,6 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   navbar: typeof Navbar;
-  clubs2: typeof Clubs2;
   h2: "h2";
   mainStak: "div";
   leftStack: "div";
@@ -518,7 +507,6 @@ export const PlasmicMatches = Object.assign(
   {
     // Helper components rendering sub-elements
     navbar: makeNodeComponent("navbar"),
-    clubs2: makeNodeComponent("clubs2"),
     h2: makeNodeComponent("h2"),
     mainStak: makeNodeComponent("mainStak"),
     leftStack: makeNodeComponent("leftStack"),

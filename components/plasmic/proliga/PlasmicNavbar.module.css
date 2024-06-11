@@ -267,9 +267,23 @@
   max-width: 100%;
   height: 27px;
   cursor: pointer;
+  display: none !important;
 }
 .img__vn04C > picture > img {
   object-fit: cover;
+}
+@media (min-width: 0px) and (max-width: 568px) {
+  .img__vn04C {
+    display: block !important;
+  }
+}
+.text__xjOyy {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  color: #ffffff94;
+  min-width: 0;
 }
 .logout:global(.__wab_instance) {
   position: relative;

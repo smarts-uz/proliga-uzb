@@ -49,7 +49,7 @@ function Register_(props: RegisterProps, ref: HTMLElementRefOf<"div">) {
                                     }
                                     else {
                                         // alert(password)
-                                        router.push("/");
+                                        router.push("/competition");
                                         await mutate(PLASMIC_AUTH_DATA_KEY);}
 
                                 }

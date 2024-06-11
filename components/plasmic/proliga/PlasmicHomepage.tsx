@@ -66,7 +66,6 @@ import {
 } from "@plasmicapp/react-web/lib/data-sources";
 
 import Navbar from "../../Navbar"; // plasmic-import: TKT8XnZtrLZi/component
-import Clubs2 from "../../Clubs2"; // plasmic-import: 3EueAFP_3sEI/component
 import SearchComponent from "../../SearchComponent"; // plasmic-import: mmk_GiTXUtux/component
 import AvatarPlayer from "../../AvatarPlayer"; // plasmic-import: 4QnaRcOLXj0D/component
 import MessageCard from "../../MessageCard"; // plasmic-import: KNRpEkS9bXP0/component
@@ -97,7 +96,6 @@ export const PlasmicHomepage__ArgProps = new Array<ArgPropType>();
 export type PlasmicHomepage__OverridesType = {
   root?: Flex__<"div">;
   navbar?: Flex__<typeof Navbar>;
-  clubs2?: Flex__<typeof Clubs2>;
   heroSection?: Flex__<"div">;
   searchComponent?: Flex__<typeof SearchComponent>;
   playersTable?: Flex__<"div">;
@@ -258,12 +256,6 @@ function PlasmicHomepage__RenderFunc(props: {
             data-plasmic-name={"navbar"}
             data-plasmic-override={overrides.navbar}
             className={classNames("__wab_instance", sty.navbar)}
-          />
-
-          <Clubs2
-            data-plasmic-name={"clubs2"}
-            data-plasmic-override={overrides.clubs2}
-            className={classNames("__wab_instance", sty.clubs2)}
           />
 
           <Stack__
@@ -1813,7 +1805,6 @@ const PlasmicDescendants = {
   root: [
     "root",
     "navbar",
-    "clubs2",
     "heroSection",
     "searchComponent",
     "playersTable",
@@ -1826,7 +1817,6 @@ const PlasmicDescendants = {
     "footer"
   ],
   navbar: ["navbar"],
-  clubs2: ["clubs2"],
   heroSection: ["heroSection"],
   searchComponent: ["searchComponent"],
   playersTable: ["playersTable", "goa", "def", "mid", "str"],
@@ -1844,7 +1834,6 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   navbar: typeof Navbar;
-  clubs2: typeof Clubs2;
   heroSection: "div";
   searchComponent: typeof SearchComponent;
   playersTable: "div";
@@ -1918,7 +1907,6 @@ export const PlasmicHomepage = Object.assign(
   {
     // Helper components rendering sub-elements
     navbar: makeNodeComponent("navbar"),
-    clubs2: makeNodeComponent("clubs2"),
     heroSection: makeNodeComponent("heroSection"),
     searchComponent: makeNodeComponent("searchComponent"),
     playersTable: makeNodeComponent("playersTable"),

@@ -297,11 +297,11 @@
 }
 .text__xE8Xp {
   position: relative;
-  width: 100%;
+  width: auto;
   height: auto;
   max-width: 100%;
   padding-left: 16px;
-  min-width: 0;
+  cursor: pointer;
 }
 .nadpis {
   display: flex;

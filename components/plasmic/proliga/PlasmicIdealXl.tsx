@@ -60,7 +60,6 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import Navbar from "../../Navbar"; // plasmic-import: TKT8XnZtrLZi/component
-import Clubs2 from "../../Clubs2"; // plasmic-import: 3EueAFP_3sEI/component
 import { AntdDropdown } from "@plasmicpkgs/antd5/skinny/registerDropdown";
 import { AntdMenuItem } from "@plasmicpkgs/antd5/skinny/registerMenu";
 import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
@@ -91,7 +90,6 @@ export const PlasmicIdealXl__ArgProps = new Array<ArgPropType>();
 export type PlasmicIdealXl__OverridesType = {
   idealXl?: Flex__<"div">;
   navbar?: Flex__<typeof Navbar>;
-  clubs2?: Flex__<typeof Clubs2>;
   h4?: Flex__<"h4">;
   dropdown?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
@@ -187,12 +185,6 @@ function PlasmicIdealXl__RenderFunc(props: {
             data-plasmic-name={"navbar"}
             data-plasmic-override={overrides.navbar}
             className={classNames("__wab_instance", sty.navbar)}
-          />
-
-          <Clubs2
-            data-plasmic-name={"clubs2"}
-            data-plasmic-override={overrides.clubs2}
-            className={classNames("__wab_instance", sty.clubs2)}
           />
 
           <div className={classNames(projectcss.all, sty.freeBox__mz0Fn)}>
@@ -414,7 +406,6 @@ const PlasmicDescendants = {
   idealXl: [
     "idealXl",
     "navbar",
-    "clubs2",
     "h4",
     "dropdown",
     "button",
@@ -424,7 +415,6 @@ const PlasmicDescendants = {
     "footer"
   ],
   navbar: ["navbar"],
-  clubs2: ["clubs2"],
   h4: ["h4"],
   dropdown: ["dropdown", "button"],
   button: ["button"],
@@ -439,7 +429,6 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   idealXl: "div";
   navbar: typeof Navbar;
-  clubs2: typeof Clubs2;
   h4: "h4";
   dropdown: typeof AntdDropdown;
   button: typeof AntdButton;
@@ -510,7 +499,6 @@ export const PlasmicIdealXl = Object.assign(
   {
     // Helper components rendering sub-elements
     navbar: makeNodeComponent("navbar"),
-    clubs2: makeNodeComponent("clubs2"),
     h4: makeNodeComponent("h4"),
     dropdown: makeNodeComponent("dropdown"),
     button: makeNodeComponent("button"),

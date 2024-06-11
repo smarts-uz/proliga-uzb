@@ -60,7 +60,6 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import Navbar from "../../Navbar"; // plasmic-import: TKT8XnZtrLZi/component
-import Clubs2 from "../../Clubs2"; // plasmic-import: 3EueAFP_3sEI/component
 import InjuredClub from "../../InjuredClub"; // plasmic-import: QI5VjKINDG8A/component
 import InjuredTeamMember from "../../InjuredTeamMember"; // plasmic-import: sSfppfkBqSwu/component
 import Footer from "../../Footer"; // plasmic-import: kIdovXGtWiEz/component
@@ -86,8 +85,6 @@ export const PlasmicAbsences__ArgProps = new Array<ArgPropType>();
 export type PlasmicAbsences__OverridesType = {
   root?: Flex__<"div">;
   navbar?: Flex__<typeof Navbar>;
-  freeBox?: Flex__<"div">;
-  clubs2?: Flex__<typeof Clubs2>;
   text?: Flex__<"div">;
   columns?: Flex__<"div">;
   footer?: Flex__<typeof Footer>;
@@ -159,17 +156,6 @@ function PlasmicAbsences__RenderFunc(props: {
             className={classNames("__wab_instance", sty.navbar)}
           />
 
-          <div
-            data-plasmic-name={"freeBox"}
-            data-plasmic-override={overrides.freeBox}
-            className={classNames(projectcss.all, sty.freeBox)}
-          >
-            <Clubs2
-              data-plasmic-name={"clubs2"}
-              data-plasmic-override={overrides.clubs2}
-              className={classNames("__wab_instance", sty.clubs2)}
-            />
-          </div>
           <div
             data-plasmic-name={"text"}
             data-plasmic-override={overrides.text}
@@ -356,10 +342,8 @@ function PlasmicAbsences__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "navbar", "freeBox", "clubs2", "text", "columns", "footer"],
+  root: ["root", "navbar", "text", "columns", "footer"],
   navbar: ["navbar"],
-  freeBox: ["freeBox", "clubs2"],
-  clubs2: ["clubs2"],
   text: ["text"],
   columns: ["columns"],
   footer: ["footer"]
@@ -370,8 +354,6 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   navbar: typeof Navbar;
-  freeBox: "div";
-  clubs2: typeof Clubs2;
   text: "div";
   columns: "div";
   footer: typeof Footer;
@@ -438,8 +420,6 @@ export const PlasmicAbsences = Object.assign(
   {
     // Helper components rendering sub-elements
     navbar: makeNodeComponent("navbar"),
-    freeBox: makeNodeComponent("freeBox"),
-    clubs2: makeNodeComponent("clubs2"),
     text: makeNodeComponent("text"),
     columns: makeNodeComponent("columns"),
     footer: makeNodeComponent("footer"),
