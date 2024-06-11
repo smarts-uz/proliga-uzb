@@ -61,6 +61,7 @@ import {
 
 import { AntdAvatar } from "@plasmicpkgs/antd5/skinny/registerAvatar";
 import TextInput from "../../TextInput"; // plasmic-import: xwgFLXqL07mD/component
+import Button from "../../Button"; // plasmic-import: H0AldfR-bP7i/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -71,6 +72,7 @@ import sty from "./PlasmicLoginAuth.module.css"; // plasmic-import: mheDXg-YkeTz
 
 import SearchsvgIcon from "./icons/PlasmicIcon__Searchsvg"; // plasmic-import: TfB627kbYt5s/icon
 import ChecksvgIcon from "./icons/PlasmicIcon__Checksvg"; // plasmic-import: BLgPkmgd4hOv/icon
+import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: 6EplYmkkN57M/icon
 
 createPlasmicElementProxy;
 
@@ -90,7 +92,7 @@ export type PlasmicLoginAuth__OverridesType = {
   login?: Flex__<"div">;
   emailInput?: Flex__<typeof TextInput>;
   passwordInput?: Flex__<typeof TextInput>;
-  loginButton?: Flex__<"a"> & Partial<LinkProps>;
+  submitButton?: Flex__<typeof Button>;
   nadpis?: Flex__<"div">;
 };
 
@@ -367,20 +369,14 @@ function PlasmicLoginAuth__RenderFunc(props: {
               }
             />
 
-            <PlasmicLink__
-              data-plasmic-name={"loginButton"}
-              data-plasmic-override={overrides.loginButton}
-              className={classNames(
-                projectcss.all,
-                projectcss.a,
-                projectcss.__wab_text,
-                sty.loginButton
-              )}
-              component={Link}
-              platform={"nextjs"}
+            <Button
+              data-plasmic-name={"submitButton"}
+              data-plasmic-override={overrides.submitButton}
+              className={classNames("__wab_instance", sty.submitButton)}
+              color={"green"}
             >
-              {"login button"}
-            </PlasmicLink__>
+              {"Login"}
+            </Button>
             <div className={classNames(projectcss.all, sty.freeBox__bmtVl)}>
               <div
                 className={classNames(
@@ -486,7 +482,7 @@ const PlasmicDescendants = {
     "login",
     "emailInput",
     "passwordInput",
-    "loginButton",
+    "submitButton",
     "nadpis"
   ],
   avatar: ["avatar"],
@@ -495,13 +491,13 @@ const PlasmicDescendants = {
     "login",
     "emailInput",
     "passwordInput",
-    "loginButton",
+    "submitButton",
     "nadpis"
   ],
-  login: ["login", "emailInput", "passwordInput", "loginButton"],
+  login: ["login", "emailInput", "passwordInput", "submitButton"],
   emailInput: ["emailInput"],
   passwordInput: ["passwordInput"],
-  loginButton: ["loginButton"],
+  submitButton: ["submitButton"],
   nadpis: ["nadpis"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -514,7 +510,7 @@ type NodeDefaultElementType = {
   login: "div";
   emailInput: typeof TextInput;
   passwordInput: typeof TextInput;
-  loginButton: "a";
+  submitButton: typeof Button;
   nadpis: "div";
 };
 
@@ -583,7 +579,7 @@ export const PlasmicLoginAuth = Object.assign(
     login: makeNodeComponent("login"),
     emailInput: makeNodeComponent("emailInput"),
     passwordInput: makeNodeComponent("passwordInput"),
-    loginButton: makeNodeComponent("loginButton"),
+    submitButton: makeNodeComponent("submitButton"),
     nadpis: makeNodeComponent("nadpis"),
 
     // Metadata about props expected for PlasmicLoginAuth

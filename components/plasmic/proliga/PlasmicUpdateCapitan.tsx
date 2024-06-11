@@ -60,6 +60,7 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
+import Button from "../../Button"; // plasmic-import: H0AldfR-bP7i/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -67,6 +68,9 @@ import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css";
 import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: tDWy3GXn2mzd9e2xUaPdmu/projectcss
 import sty from "./PlasmicUpdateCapitan.module.css"; // plasmic-import: XWByMSCmxs7g/css
+
+import ChecksvgIcon from "./icons/PlasmicIcon__Checksvg"; // plasmic-import: BLgPkmgd4hOv/icon
+import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: 6EplYmkkN57M/icon
 
 createPlasmicElementProxy;
 
@@ -90,7 +94,7 @@ export type PlasmicUpdateCapitan__OverridesType = {
   modal?: Flex__<typeof AntdModal>;
   freeBox?: Flex__<"div">;
   text?: Flex__<"div">;
-  link?: Flex__<"a"> & Partial<LinkProps>;
+  button?: Flex__<typeof Button>;
 };
 
 export interface DefaultUpdateCapitanProps {
@@ -185,16 +189,10 @@ function PlasmicUpdateCapitan__RenderFunc(props: {
         open={generateStateValueProp($state, ["modal", "open"])}
         title={"Update Capitan"}
         trigger={
-          <PlasmicLink__
-            data-plasmic-name={"link"}
-            data-plasmic-override={overrides.link}
-            className={classNames(
-              projectcss.all,
-              projectcss.a,
-              projectcss.__wab_text,
-              sty.link
-            )}
-            component={Link}
+          <Button
+            data-plasmic-name={"button"}
+            data-plasmic-override={overrides.button}
+            className={classNames("__wab_instance", sty.button)}
             onClick={async event => {
               const $steps = {};
 
@@ -226,10 +224,9 @@ function PlasmicUpdateCapitan__RenderFunc(props: {
                 $steps["updateModalOpen"] = await $steps["updateModalOpen"];
               }
             }}
-            platform={"nextjs"}
           >
-            {"button open modal"}
-          </PlasmicLink__>
+            {"Capitan"}
+          </Button>
         }
       >
         <div
@@ -255,11 +252,11 @@ function PlasmicUpdateCapitan__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "modal", "freeBox", "text", "link"],
-  modal: ["modal", "freeBox", "text", "link"],
+  root: ["root", "modal", "freeBox", "text", "button"],
+  modal: ["modal", "freeBox", "text", "button"],
   freeBox: ["freeBox", "text"],
   text: ["text"],
-  link: ["link"]
+  button: ["button"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -269,7 +266,7 @@ type NodeDefaultElementType = {
   modal: typeof AntdModal;
   freeBox: "div";
   text: "div";
-  link: "a";
+  button: typeof Button;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -335,7 +332,7 @@ export const PlasmicUpdateCapitan = Object.assign(
     modal: makeNodeComponent("modal"),
     freeBox: makeNodeComponent("freeBox"),
     text: makeNodeComponent("text"),
-    link: makeNodeComponent("link"),
+    button: makeNodeComponent("button"),
 
     // Metadata about props expected for PlasmicUpdateCapitan
     internalVariantProps: PlasmicUpdateCapitan__VariantProps,

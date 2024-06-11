@@ -2,43 +2,64 @@
 // This file is owned by you, feel free to edit as you see fit.
 import * as React from "react";
 import {
-  PlasmicLoginAuth,
-  DefaultLoginAuthProps
+    PlasmicLoginAuth,
+    DefaultLoginAuthProps
 } from "./plasmic/proliga/PlasmicLoginAuth";
-import { HTMLElementRefOf } from "@plasmicapp/react-web";
+import {HTMLElementRefOf} from "@plasmicapp/react-web";
+import {mutate} from "swr";
+import {PLASMIC_AUTH_DATA_KEY} from "@/utils/cache-keys";
+import {useState} from "react";
+import {createPagesBrowserClient} from "@supabase/auth-helpers-nextjs";
+import {useRouter} from "next/router";
 
-// Your component props start with props for variants and slots you defined
-// in Plasmic, but you can add more here, like event handlers that you can
-// attach to named nodes in your component.
-//
-// If you don't want to expose certain variants or slots as a prop, you can use
-// Omit to hide them:
-//
-// interface LoginAuthProps extends Omit<DefaultLoginAuthProps, "hideProps1"|"hideProp2"> {
-//   // etc.
-// }
-//
-// You can also stop extending from DefaultLoginAuthProps altogether and have
-// total control over the props for your component.
-export interface LoginAuthProps extends DefaultLoginAuthProps {}
+
+export interface LoginAuthProps extends DefaultLoginAuthProps {
+}
 
 function LoginAuth_(props: LoginAuthProps, ref: HTMLElementRefOf<"div">) {
-  // Use PlasmicLoginAuth to render this component as it was
-  // designed in Plasmic, by activating the appropriate variants,
-  // attaching the appropriate event handlers, etc.  You
-  // can also install whatever React hooks you need here to manage state or
-  // fetch data.
-  //
-  // Props you can pass into PlasmicLoginAuth are:
-  // 1. Variants you want to activate,
-  // 2. Contents for slots you want to fill,
-  // 3. Overrides for any named node in the component to attach behavior and data,
-  // 4. Props to set on the root node.
-  //
-  // By default, we are just piping all LoginAuthProps here, but feel free
-  // to do whatever works for you.
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [supabaseClient] = React.useState(() => createPagesBrowserClient());
+    const router = useRouter();
 
-  return <PlasmicLoginAuth root={{ ref }} {...props} />;
+    return <PlasmicLoginAuth root={{ref}} {...props}
+
+                             emailInput={{
+                                 value: email,
+                                 onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+                                     setEmail(e.target.value);
+                                 }
+                             }
+                             }
+                             passwordInput={{
+                                 value: password,
+                                 onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+                                     setPassword(e.target.value);
+                                 }
+                             }}
+                             submitButton={{
+                                 onClick: async () => {
+                                     const {data, error} = await supabaseClient.auth.signInWithPassword({
+                                         email: email,
+                                         password: password
+                                     });
+
+                                     if (error) {
+                                         console.error(error)
+                                         alert(error)
+                                     } else {
+                                         // alert(password)
+                                         router.push("/");
+                                         await mutate(PLASMIC_AUTH_DATA_KEY);
+                                     }
+
+                                 }
+
+                             }
+
+                             }
+
+    />;
 }
 
 const LoginAuth = React.forwardRef(LoginAuth_);
