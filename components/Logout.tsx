@@ -4,41 +4,29 @@ import * as React from "react";
 import {
   PlasmicLogout,
   DefaultLogoutProps
-} from "./plasmic/website_starter/PlasmicLogout";
+} from "./plasmic/proliga/PlasmicLogout";
 import { HTMLElementRefOf } from "@plasmicapp/react-web";
+import {createPagesBrowserClient} from "@supabase/auth-helpers-nextjs";
+import {useRouter} from "next/router";
+import {PLASMIC_AUTH_DATA_KEY} from "../utils/cache-keys";
+import {mutate} from "swr";
 
-// Your component props start with props for variants and slots you defined
-// in Plasmic, but you can add more here, like event handlers that you can
-// attach to named nodes in your component.
-//
-// If you don't want to expose certain variants or slots as a prop, you can use
-// Omit to hide them:
-//
-// interface LogoutProps extends Omit<DefaultLogoutProps, "hideProps1"|"hideProp2"> {
-//   // etc.
-// }
-//
-// You can also stop extending from DefaultLogoutProps altogether and have
-// total control over the props for your component.
+
 export interface LogoutProps extends DefaultLogoutProps {}
 
 function Logout_(props: LogoutProps, ref: HTMLElementRefOf<"div">) {
-  // Use PlasmicLogout to render this component as it was
-  // designed in Plasmic, by activating the appropriate variants,
-  // attaching the appropriate event handlers, etc.  You
-  // can also install whatever React hooks you need here to manage state or
-  // fetch data.
-  //
-  // Props you can pass into PlasmicLogout are:
-  // 1. Variants you want to activate,
-  // 2. Contents for slots you want to fill,
-  // 3. Overrides for any named node in the component to attach behavior and data,
-  // 4. Props to set on the root node.
-  //
-  // By default, we are just piping all LogoutProps here, but feel free
-  // to do whatever works for you.
+  const [supabaseClient] = React.useState(() => createPagesBrowserClient());
+  const router = useRouter();
 
-  return <PlasmicLogout root={{ ref }} {...props} />;
+  return <PlasmicLogout root={{ ref }} {...props}
+                        submitButton={{
+                          onClick: async () => {
+                            await supabaseClient.auth.signOut();
+                            await mutate(PLASMIC_AUTH_DATA_KEY);
+                            // router.reload();
+                            router.push('/login')
+                          },
+                        }}/>;
 }
 
 const Logout = React.forwardRef(Logout_);

@@ -1874,6 +1874,19 @@
           "scheme": "blackbox",
           "componentType": "component",
           "plumeType": "button"
+        },
+        {
+          "id": "i0rgrgn_wwgT",
+          "name": "Logout",
+          "type": "managed",
+          "projectId": "tDWy3GXn2mzd9e2xUaPdmu",
+          "renderModuleFilePath": "plasmic/proliga/PlasmicLogout.tsx",
+          "importSpec": {
+            "modulePath": "Logout.tsx"
+          },
+          "cssFilePath": "plasmic/proliga/PlasmicLogout.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [

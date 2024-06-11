@@ -374,6 +374,44 @@ function PlasmicRegister__RenderFunc(props: {
               data-plasmic-override={overrides.submitButton}
               className={classNames("__wab_instance", sty.submitButton)}
               color={"green"}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["updateEmailInputValue"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["emailInput", "value"]
+                        },
+                        operation: 0
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateEmailInputValue"] != null &&
+                  typeof $steps["updateEmailInputValue"] === "object" &&
+                  typeof $steps["updateEmailInputValue"].then === "function"
+                ) {
+                  $steps["updateEmailInputValue"] = await $steps[
+                    "updateEmailInputValue"
+                  ];
+                }
+              }}
             >
               {"Register"}
             </Button>

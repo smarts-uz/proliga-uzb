@@ -60,6 +60,7 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import * as pp from "@plasmicapp/react-web";
+import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -241,6 +242,12 @@ function PlasmicButton__RenderFunc(props: {
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.color
+      },
+      {
+        path: "variable",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -336,6 +343,37 @@ function PlasmicButton__RenderFunc(props: {
           [sty.rootsize_minimal]: hasVariant($state, "size", "minimal")
         }
       )}
+      onClick={async event => {
+        const $steps = {};
+
+        $steps["updateVariable"] = true
+          ? (() => {
+              const actionArgs = {
+                variable: {
+                  objRoot: $state,
+                  variablePath: ["variable"]
+                },
+                operation: 0
+              };
+              return (({ variable, value, startIndex, deleteCount }) => {
+                if (!variable) {
+                  return;
+                }
+                const { objRoot, variablePath } = variable;
+
+                $stateSet(objRoot, variablePath, value);
+                return value;
+              })?.apply(null, [actionArgs]);
+            })()
+          : undefined;
+        if (
+          $steps["updateVariable"] != null &&
+          typeof $steps["updateVariable"] === "object" &&
+          typeof $steps["updateVariable"].then === "function"
+        ) {
+          $steps["updateVariable"] = await $steps["updateVariable"];
+        }
+      }}
       data-plasmic-trigger-props={[triggerRootFocusVisibleWithinProps]}
     >
       {(hasVariant($state, "showStartIcon", "showStartIcon") ? true : false) ? (

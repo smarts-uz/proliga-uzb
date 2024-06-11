@@ -67,6 +67,7 @@ import {
 
 import { Reveal } from "@plasmicpkgs/react-awesome-reveal";
 import { AntdPopover } from "@plasmicpkgs/antd5/skinny/registerPopover";
+import Logout from "../../Logout"; // plasmic-import: i0rgrgn_wwgT/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import { useScreenVariants as useScreenVariants_8Rmrqs5Mzp6I } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: 8Rmrqs5Mzp6I/globalVariant
@@ -98,6 +99,7 @@ export type PlasmicNavbar__OverridesType = {
   items?: Flex__<"div">;
   login?: Flex__<"div">;
   popover?: Flex__<typeof AntdPopover>;
+  logout?: Flex__<typeof Logout>;
 };
 
 export interface DefaultNavbarProps {
@@ -717,6 +719,12 @@ function PlasmicNavbar__RenderFunc(props: {
               "https://cdn2.iconfinder.com/data/icons/basic-ui-color/35/Menu-512.png"
             }
           />
+
+          <Logout
+            data-plasmic-name={"logout"}
+            data-plasmic-override={overrides.logout}
+            className={classNames("__wab_instance", sty.logout)}
+          />
         </Stack__>
       </div>
     </div>
@@ -724,12 +732,13 @@ function PlasmicNavbar__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "mainStack", "logo", "items", "login", "popover"],
-  mainStack: ["mainStack", "logo", "items", "login", "popover"],
+  root: ["root", "mainStack", "logo", "items", "login", "popover", "logout"],
+  mainStack: ["mainStack", "logo", "items", "login", "popover", "logout"],
   logo: ["logo"],
   items: ["items"],
-  login: ["login", "popover"],
-  popover: ["popover"]
+  login: ["login", "popover", "logout"],
+  popover: ["popover"],
+  logout: ["logout"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -741,6 +750,7 @@ type NodeDefaultElementType = {
   items: "div";
   login: "div";
   popover: typeof AntdPopover;
+  logout: typeof Logout;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -808,6 +818,7 @@ export const PlasmicNavbar = Object.assign(
     items: makeNodeComponent("items"),
     login: makeNodeComponent("login"),
     popover: makeNodeComponent("popover"),
+    logout: makeNodeComponent("logout"),
 
     // Metadata about props expected for PlasmicNavbar
     internalVariantProps: PlasmicNavbar__VariantProps,
