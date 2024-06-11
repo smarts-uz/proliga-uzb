@@ -61,6 +61,8 @@
   position: relative;
   left: auto;
   top: auto;
+  width: 100%;
+  min-width: 0;
 }
 .freeBox__azTr2 {
   display: flex;

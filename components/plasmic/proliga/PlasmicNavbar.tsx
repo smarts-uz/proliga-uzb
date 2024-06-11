@@ -97,7 +97,7 @@ export type PlasmicNavbar__OverridesType = {
   mainStack?: Flex__<"div">;
   logo?: Flex__<"div">;
   items?: Flex__<"div">;
-  composition?: Flex__<"div">;
+  competition?: Flex__<"div">;
   login?: Flex__<"div">;
   popover?: Flex__<typeof AntdPopover>;
   logout?: Flex__<typeof Logout>;
@@ -592,12 +592,12 @@ function PlasmicNavbar__RenderFunc(props: {
               triggerOnce={true}
             >
               <div
-                data-plasmic-name={"composition"}
-                data-plasmic-override={overrides.composition}
+                data-plasmic-name={"competition"}
+                data-plasmic-override={overrides.competition}
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.composition
+                  sty.competition
                 )}
                 onClick={async event => {
                   const $steps = {};
@@ -825,7 +825,7 @@ const PlasmicDescendants = {
     "mainStack",
     "logo",
     "items",
-    "composition",
+    "competition",
     "login",
     "popover",
     "logout"
@@ -834,14 +834,14 @@ const PlasmicDescendants = {
     "mainStack",
     "logo",
     "items",
-    "composition",
+    "competition",
     "login",
     "popover",
     "logout"
   ],
   logo: ["logo"],
-  items: ["items", "composition"],
-  composition: ["composition"],
+  items: ["items", "competition"],
+  competition: ["competition"],
   login: ["login", "popover", "logout"],
   popover: ["popover"],
   logout: ["logout"]
@@ -854,7 +854,7 @@ type NodeDefaultElementType = {
   mainStack: "div";
   logo: "div";
   items: "div";
-  composition: "div";
+  competition: "div";
   login: "div";
   popover: typeof AntdPopover;
   logout: typeof Logout;
@@ -923,7 +923,7 @@ export const PlasmicNavbar = Object.assign(
     mainStack: makeNodeComponent("mainStack"),
     logo: makeNodeComponent("logo"),
     items: makeNodeComponent("items"),
-    composition: makeNodeComponent("composition"),
+    competition: makeNodeComponent("competition"),
     login: makeNodeComponent("login"),
     popover: makeNodeComponent("popover"),
     logout: makeNodeComponent("logout"),

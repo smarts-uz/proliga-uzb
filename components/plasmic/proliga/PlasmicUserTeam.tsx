@@ -68,6 +68,7 @@ import {
 import Navbar from "../../Navbar"; // plasmic-import: TKT8XnZtrLZi/component
 import SideBarMyTeam from "../../SideBarMyTeam"; // plasmic-import: 7ylFTnxhQETY/component
 import SoccerPlaceMens from "../../SoccerPlaceMens"; // plasmic-import: w6mcybgJxhpK/component
+import PlayerPickerRow from "../../PlayerPickerRow"; // plasmic-import: NaQtMjgilBY9/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -96,6 +97,7 @@ export type PlasmicUserTeam__OverridesType = {
   sideBarMyTeam?: Flex__<typeof SideBarMyTeam>;
   soccerPlaceMens?: Flex__<typeof SoccerPlaceMens>;
   freeBox?: Flex__<"div">;
+  playerPickerRow?: Flex__<typeof PlayerPickerRow>;
 };
 
 export interface DefaultUserTeamProps {}
@@ -267,9 +269,14 @@ function PlasmicUserTeam__RenderFunc(props: {
                     sty.text__x1Ul0
                   )}
                 >
-                  {"Enter some text"}
+                  {"Players(1/11)"}
                 </div>
               </div>
+              <PlayerPickerRow
+                data-plasmic-name={"playerPickerRow"}
+                data-plasmic-override={overrides.playerPickerRow}
+                className={classNames("__wab_instance", sty.playerPickerRow)}
+              />
             </div>
           </div>
         </div>
@@ -286,14 +293,22 @@ const PlasmicDescendants = {
     "main",
     "sideBarMyTeam",
     "soccerPlaceMens",
-    "freeBox"
+    "freeBox",
+    "playerPickerRow"
   ],
   h1: ["h1"],
   navbar: ["navbar"],
-  main: ["main", "sideBarMyTeam", "soccerPlaceMens", "freeBox"],
+  main: [
+    "main",
+    "sideBarMyTeam",
+    "soccerPlaceMens",
+    "freeBox",
+    "playerPickerRow"
+  ],
   sideBarMyTeam: ["sideBarMyTeam"],
   soccerPlaceMens: ["soccerPlaceMens"],
-  freeBox: ["freeBox"]
+  freeBox: ["freeBox"],
+  playerPickerRow: ["playerPickerRow"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -306,6 +321,7 @@ type NodeDefaultElementType = {
   sideBarMyTeam: typeof SideBarMyTeam;
   soccerPlaceMens: typeof SoccerPlaceMens;
   freeBox: "div";
+  playerPickerRow: typeof PlayerPickerRow;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -374,6 +390,7 @@ export const PlasmicUserTeam = Object.assign(
     sideBarMyTeam: makeNodeComponent("sideBarMyTeam"),
     soccerPlaceMens: makeNodeComponent("soccerPlaceMens"),
     freeBox: makeNodeComponent("freeBox"),
+    playerPickerRow: makeNodeComponent("playerPickerRow"),
 
     // Metadata about props expected for PlasmicUserTeam
     internalVariantProps: PlasmicUserTeam__VariantProps,

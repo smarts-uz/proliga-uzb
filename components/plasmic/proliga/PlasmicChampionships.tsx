@@ -179,13 +179,13 @@ function PlasmicChampionships__RenderFunc(props: {
     team: usePlasmicDataOp(() => {
       return {
         sourceId: "8cdHi4ivRUEkK6qbegQevF",
-        opId: "a538c5a4-574d-4785-a69a-6af9638414ca",
+        opId: "953bfba6-6599-4384-99b8-a2fe13174a9a",
         userArgs: {
           query: [$state.currentChampionship]
         },
-        cacheKey: `plasmic.$.a538c5a4-574d-4785-a69a-6af9638414ca.$.`,
+        cacheKey: `plasmic.$.953bfba6-6599-4384-99b8-a2fe13174a9a.$.`,
         invalidatedKeys: null,
-        roleId: null
+        roleId: "f8970d3a-c1ae-4ba8-80dd-90e548ee70d6"
       };
     })
   };
@@ -276,87 +276,6 @@ function PlasmicChampionships__RenderFunc(props: {
                   key={currentIndex}
                   onClick={async event => {
                     const $steps = {};
-
-                    $steps["postgresCreate"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            dataOp: {
-                              sourceId: "8cdHi4ivRUEkK6qbegQevF",
-                              opId: "95ea4abc-f557-4a2e-ab82-5ac4166a59fe",
-                              userArgs: {
-                                variables: [currentItem.id]
-                              },
-                              cacheKey: null,
-                              invalidatedKeys: ["plasmic_refresh_all"],
-                              roleId: "f8970d3a-c1ae-4ba8-80dd-90e548ee70d6"
-                            }
-                          };
-                          return (async ({ dataOp, continueOnError }) => {
-                            try {
-                              const response = await executePlasmicDataOp(
-                                dataOp,
-                                {
-                                  userAuthToken: dataSourcesCtx?.userAuthToken,
-                                  user: dataSourcesCtx?.user
-                                }
-                              );
-                              await plasmicInvalidate(dataOp.invalidatedKeys);
-                              return response;
-                            } catch (e) {
-                              if (!continueOnError) {
-                                throw e;
-                              }
-                              return e;
-                            }
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["postgresCreate"] != null &&
-                      typeof $steps["postgresCreate"] === "object" &&
-                      typeof $steps["postgresCreate"].then === "function"
-                    ) {
-                      $steps["postgresCreate"] = await $steps["postgresCreate"];
-                    }
-
-                    $steps["goToTeams"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            destination: `/user/team/${(() => {
-                              try {
-                                return currentItem.id;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return undefined;
-                                }
-                                throw e;
-                              }
-                            })()}`
-                          };
-                          return (({ destination }) => {
-                            if (
-                              typeof destination === "string" &&
-                              destination.startsWith("#")
-                            ) {
-                              document
-                                .getElementById(destination.substr(1))
-                                .scrollIntoView({ behavior: "smooth" });
-                            } else {
-                              __nextRouter?.push(destination);
-                            }
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["goToTeams"] != null &&
-                      typeof $steps["goToTeams"] === "object" &&
-                      typeof $steps["goToTeams"].then === "function"
-                    ) {
-                      $steps["goToTeams"] = await $steps["goToTeams"];
-                    }
                   }}
                 >
                   <PlasmicImg__

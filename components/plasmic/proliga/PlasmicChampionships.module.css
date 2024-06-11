@@ -176,7 +176,7 @@
 }
 .img__lxqfa {
   position: relative;
-  object-fit: fill;
+  object-fit: contain;
   max-width: 100%;
   width: 318px;
   height: 136px;
@@ -185,7 +185,7 @@
   flex-shrink: 0;
 }
 .img__lxqfa > picture > img {
-  object-fit: fill;
+  object-fit: contain;
 }
 .text {
   position: relative;
@@ -194,6 +194,9 @@
   max-width: 100%;
   text-align: center;
   color: var(--token-w7ybUCajlWG4);
+  font-weight: 700;
+  font-size: 18px;
+  padding-top: 10px;
   min-width: 0;
 }
 .img__xWmDf {
