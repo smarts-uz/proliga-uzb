@@ -14,7 +14,7 @@
   -webkit-transition-property: all;
   -webkit-transition-duration: 1s;
 }
-.img__cfuKp {
+.img__axqph {
   position: absolute;
   object-fit: cover;
   max-width: 100%;
@@ -22,7 +22,7 @@
   left: 1px;
   top: 2px;
 }
-.img__cfuKp > picture > img {
+.img__axqph > picture > img {
   object-fit: cover;
 }
 .freeBox {
@@ -37,14 +37,14 @@
   min-width: 0;
   padding: 8px;
 }
-.img__a9SuT {
+.img__d8Cvi {
   object-fit: cover;
   max-width: 100%;
 }
-.img__a9SuT > picture > img {
+.img__d8Cvi > picture > img {
   object-fit: cover;
 }
-.img__iv6Eb {
+.img__lZVb {
   position: absolute;
   object-fit: fill;
   max-width: 100%;
@@ -55,7 +55,7 @@
   z-index: 2;
   flex-shrink: 0;
 }
-.img__iv6Eb > picture > img {
+.img__lZVb > picture > img {
   object-fit: fill;
 }
 .text {
@@ -63,7 +63,7 @@
   width: 53px;
   height: auto;
   max-width: 100%;
-  color: var(--token-41VRhDKfihhY);
+  color: var(--token-jgohepLVeKvh);
   background: linear-gradient(
       var(--token-LqtA0Zd3XkIQ),
       var(--token-LqtA0Zd3XkIQ)

@@ -133,7 +133,23 @@ function PlasmicChampionships__RenderFunc(props: {
   let [$queries, setDollarQueries] = React.useState<
     Record<string, ReturnType<typeof usePlasmicDataOp>>
   >({});
-
+  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
+    () => [
+      {
+        path: "currentChampionship",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      }
+    ],
+    [$props, $ctx, $refs]
+  );
+  const $state = useDollarState(stateSpecs, {
+    $props,
+    $ctx,
+    $queries: $queries,
+    $refs
+  });
   const dataSourcesCtx = usePlasmicDataSourceContext();
   const plasmicInvalidate = usePlasmicInvalidate();
 
@@ -156,6 +172,18 @@ function PlasmicChampionships__RenderFunc(props: {
             throw e;
           }
         })()}.$.a3926ae2-ba51-4cc3-a479-7fb855fe9bdb.$.`,
+        invalidatedKeys: null,
+        roleId: null
+      };
+    }),
+    team: usePlasmicDataOp(() => {
+      return {
+        sourceId: "8cdHi4ivRUEkK6qbegQevF",
+        opId: "a538c5a4-574d-4785-a69a-6af9638414ca",
+        userArgs: {
+          query: [$state.currentChampionship]
+        },
+        cacheKey: `plasmic.$.a538c5a4-574d-4785-a69a-6af9638414ca.$.`,
         invalidatedKeys: null,
         roleId: null
       };
@@ -341,6 +369,135 @@ function PlasmicChampionships__RenderFunc(props: {
                     displayMinWidth={"0"}
                     displayWidth={"318px"}
                     loading={"lazy"}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["stateChampionship"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["currentChampionship"]
+                              },
+                              operation: 0,
+                              value: currentItem.id
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["stateChampionship"] != null &&
+                        typeof $steps["stateChampionship"] === "object" &&
+                        typeof $steps["stateChampionship"].then === "function"
+                      ) {
+                        $steps["stateChampionship"] = await $steps[
+                          "stateChampionship"
+                        ];
+                      }
+
+                      $steps["createTeam"] =
+                        $queries.team.data?.length === 0
+                          ? (() => {
+                              const actionArgs = {
+                                dataOp: {
+                                  sourceId: "8cdHi4ivRUEkK6qbegQevF",
+                                  opId: "6798d78b-b4ff-4a2d-97de-d3e96f1f0f4c",
+                                  userArgs: {
+                                    variables: [currentItem.id]
+                                  },
+                                  cacheKey: null,
+                                  invalidatedKeys: ["plasmic_refresh_all"],
+                                  roleId: null
+                                }
+                              };
+                              return (async ({ dataOp, continueOnError }) => {
+                                try {
+                                  const response = await executePlasmicDataOp(
+                                    dataOp,
+                                    {
+                                      userAuthToken:
+                                        dataSourcesCtx?.userAuthToken,
+                                      user: dataSourcesCtx?.user
+                                    }
+                                  );
+                                  await plasmicInvalidate(
+                                    dataOp.invalidatedKeys
+                                  );
+                                  return response;
+                                } catch (e) {
+                                  if (!continueOnError) {
+                                    throw e;
+                                  }
+                                  return e;
+                                }
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                      if (
+                        $steps["createTeam"] != null &&
+                        typeof $steps["createTeam"] === "object" &&
+                        typeof $steps["createTeam"].then === "function"
+                      ) {
+                        $steps["createTeam"] = await $steps["createTeam"];
+                      }
+
+                      $steps["updateCurrentChampionship3"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              destination: `/user/team/${(() => {
+                                try {
+                                  return $queries.team.data[0].id;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()}`
+                            };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateCurrentChampionship3"] != null &&
+                        typeof $steps["updateCurrentChampionship3"] ===
+                          "object" &&
+                        typeof $steps["updateCurrentChampionship3"].then ===
+                          "function"
+                      ) {
+                        $steps["updateCurrentChampionship3"] = await $steps[
+                          "updateCurrentChampionship3"
+                        ];
+                      }
+                    }}
                     src={
                       "https://upload.wikimedia.org/wikipedia/ru/thumb/f/f2/Premier_League_Logo.svg/1200px-Premier_League_Logo.svg.png"
                     }

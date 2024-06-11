@@ -269,7 +269,7 @@ function PlasmicNavbar__RenderFunc(props: {
           hasVariant(globalVariants, "screen", "mobileOnly")
             ? (() => {
                 try {
-                  return true;
+                  return currentUser.isLoggedIn;
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
@@ -720,19 +720,23 @@ function PlasmicNavbar__RenderFunc(props: {
             }
           />
 
-          {(() => {
-            try {
-              return currentUser.isLoggedIn;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return true;
-              }
-              throw e;
-            }
-          })() ? (
+          {(
+            hasVariant(globalVariants, "screen", "mobileOnly")
+              ? true
+              : (() => {
+                  try {
+                    return currentUser.isLoggedIn;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })()
+          ) ? (
             <div
               className={classNames(
                 projectcss.all,

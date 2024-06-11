@@ -67,6 +67,10 @@ import {
 } from "@plasmicapp/react-web/lib/data-sources";
 
 import Navbar from "../../Navbar"; // plasmic-import: TKT8XnZtrLZi/component
+import TeamPlayerCreate from "../../TeamPlayerCreate"; // plasmic-import: d7-gk_liJIPx/component
+import MessageCard from "../../MessageCard"; // plasmic-import: KNRpEkS9bXP0/component
+import { RichTable } from "@plasmicpkgs/plasmic-rich-components/skinny/rich-table";
+import { tableHelpers as RichTable_Helpers } from "@plasmicpkgs/plasmic-rich-components/skinny/rich-table";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -90,8 +94,8 @@ export const PlasmicTeamCreate__ArgProps = new Array<ArgPropType>();
 export type PlasmicTeamCreate__OverridesType = {
   root?: Flex__<"div">;
   navbar?: Flex__<typeof Navbar>;
-  img?: Flex__<typeof PlasmicImg__>;
-  text?: Flex__<"div">;
+  teamPlayerCreate?: Flex__<typeof TeamPlayerCreate>;
+  table?: Flex__<typeof RichTable>;
 };
 
 export interface DefaultTeamCreateProps {}
@@ -125,16 +129,55 @@ function PlasmicTeamCreate__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const $globalActions = useGlobalActions?.();
-
   const currentUser = useCurrentUser?.() || {};
 
   let [$queries, setDollarQueries] = React.useState<
     Record<string, ReturnType<typeof usePlasmicDataOp>>
   >({});
+  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
+    () => [
+      {
+        path: "table.selectedRowKey",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
 
+        onMutate: generateOnMutateForSpec("selectedRowKey", RichTable_Helpers)
+      },
+      {
+        path: "table.selectedRow",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        onMutate: generateOnMutateForSpec("selectedRow", RichTable_Helpers)
+      },
+      {
+        path: "table.selectedRows",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        onMutate: generateOnMutateForSpec("selectedRows", RichTable_Helpers)
+      },
+      {
+        path: "table.selectedRowKeys",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        onMutate: generateOnMutateForSpec("selectedRowKeys", RichTable_Helpers)
+      }
+    ],
+    [$props, $ctx, $refs]
+  );
+  const $state = useDollarState(stateSpecs, {
+    $props,
+    $ctx,
+    $queries: $queries,
+    $refs
+  });
   const dataSourcesCtx = usePlasmicDataSourceContext();
-  const plasmicInvalidate = usePlasmicInvalidate();
 
   const new$Queries: Record<string, ReturnType<typeof usePlasmicDataOp>> = {
     query: usePlasmicDataOp(() => {
@@ -155,6 +198,26 @@ function PlasmicTeamCreate__RenderFunc(props: {
         cacheKey: `plasmic.$.9a1adef8-8556-4564-92b3-a70c99007516.$.`,
         invalidatedKeys: null,
         roleId: "f8970d3a-c1ae-4ba8-80dd-90e548ee70d6"
+      };
+    }),
+    players: usePlasmicDataOp(() => {
+      return {
+        sourceId: "8cdHi4ivRUEkK6qbegQevF",
+        opId: "a5975212-7f5e-44da-90fa-68324feac1ff",
+        userArgs: {},
+        cacheKey: `plasmic.$.a5975212-7f5e-44da-90fa-68324feac1ff.$.`,
+        invalidatedKeys: null,
+        roleId: null
+      };
+    }),
+    test: usePlasmicDataOp(() => {
+      return {
+        sourceId: "8cdHi4ivRUEkK6qbegQevF",
+        opId: "cf251af2-0301-4377-955f-ceba9a189f22",
+        userArgs: {},
+        cacheKey: `plasmic.$.cf251af2-0301-4377-955f-ceba9a189f22.$.`,
+        invalidatedKeys: null,
+        roleId: null
       };
     })
   };
@@ -197,202 +260,145 @@ function PlasmicTeamCreate__RenderFunc(props: {
             className={classNames("__wab_instance", sty.navbar)}
           />
 
-          <div className={classNames(projectcss.all, sty.freeBox__nuk3S)}>
-            <div className={classNames(projectcss.all, sty.freeBox___2LZzQ)}>
-              {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
-                (() => {
+          <Stack__
+            as={"div"}
+            hasGap={true}
+            className={classNames(projectcss.all, sty.freeBox__sOB1)}
+          >
+            <TeamPlayerCreate
+              data-plasmic-name={"teamPlayerCreate"}
+              data-plasmic-override={overrides.teamPlayerCreate}
+              className={classNames("__wab_instance", sty.teamPlayerCreate)}
+            />
+
+            <div className={classNames(projectcss.all, sty.freeBox__azTr2)}>
+              <MessageCard
+                className={classNames("__wab_instance", sty.messageCard__gjM9)}
+                heading={"qoida"}
+                textInfo={
+                  "Har bir o'yinda bir komandadan faqat 2 ta o'yinchi sotib olsa bo'ladi! Qolgan o'yinchilar uchun to'lov amalga oshiriladi"
+                }
+              />
+
+              <MessageCard
+                className={classNames("__wab_instance", sty.messageCard__ji0Ly)}
+                heading={"qoida"}
+                textInfo={
+                  "Har bir o'yinda bir komandadan faqat 2 ta o'yinchi sotib olsa bo'ladi! Qolgan o'yinchilar uchun to'lov amalga oshiriladi"
+                }
+              />
+
+              <MessageCard
+                className={classNames("__wab_instance", sty.messageCard__navDa)}
+                heading={"qoida"}
+                textInfo={
+                  "Har bir o'yinda bir komandadan faqat 2 ta o'yinchi sotib olsa bo'ladi! Qolgan o'yinchilar uchun to'lov amalga oshiriladi"
+                }
+              />
+
+              <MessageCard
+                className={classNames("__wab_instance", sty.messageCard__gHpYs)}
+                heading={"qoida"}
+                textInfo={
+                  "Har bir o'yinda bir komandadan faqat 2 ta o'yinchi sotib olsa bo'ladi! Qolgan o'yinchilar uchun to'lov amalga oshiriladi"
+                }
+              />
+            </div>
+            {(() => {
+              const child$Props = {
+                className: classNames("__wab_instance", sty.table),
+                data: (() => {
                   try {
-                    return $queries.query.data;
+                    return $queries.players;
                   } catch (e) {
                     if (
                       e instanceof TypeError ||
                       e?.plasmicType === "PlasmicUndefinedDataError"
                     ) {
-                      return [];
+                      return undefined;
                     }
                     throw e;
                   }
-                })()
-              ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                const currentItem = __plasmic_item_0;
-                const currentIndex = __plasmic_idx_0;
-                return (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__wVYvJ)}
-                    key={currentIndex}
-                    onClick={async event => {
-                      const $steps = {};
+                })(),
+                onRowSelectionChanged: async (...eventArgs: any) => {
+                  generateStateOnChangePropForCodeComponents(
+                    $state,
+                    "selectedRowKey",
+                    ["table", "selectedRowKey"],
+                    RichTable_Helpers
+                  ).apply(null, eventArgs);
+                  generateStateOnChangePropForCodeComponents(
+                    $state,
+                    "selectedRow",
+                    ["table", "selectedRow"],
+                    RichTable_Helpers
+                  ).apply(null, eventArgs);
+                  generateStateOnChangePropForCodeComponents(
+                    $state,
+                    "selectedRows",
+                    ["table", "selectedRows"],
+                    RichTable_Helpers
+                  ).apply(null, eventArgs);
+                  generateStateOnChangePropForCodeComponents(
+                    $state,
+                    "selectedRowKeys",
+                    ["table", "selectedRowKeys"],
+                    RichTable_Helpers
+                  ).apply(null, eventArgs);
+                },
+                scopeClassName: sty["table__instance"],
+                selectedRowKey: generateStateValueProp($state, [
+                  "table",
+                  "selectedRowKey"
+                ]),
+                selectedRowKeys: generateStateValueProp($state, [
+                  "table",
+                  "selectedRowKeys"
+                ]),
+                themeResetClassName: classNames(
+                  projectcss.root_reset,
+                  projectcss.root_reset_tags,
+                  projectcss.plasmic_default_styles,
+                  projectcss.plasmic_mixins,
+                  projectcss.plasmic_tokens,
+                  plasmic_antd_5_hostless_css.plasmic_tokens,
+                  plasmic_plasmic_rich_components_css.plasmic_tokens
+                )
+              };
+              initializeCodeComponentStates(
+                $state,
+                [
+                  {
+                    name: "selectedRowKey",
+                    plasmicStateName: "table.selectedRowKey"
+                  },
+                  {
+                    name: "selectedRow",
+                    plasmicStateName: "table.selectedRow"
+                  },
+                  {
+                    name: "selectedRows",
+                    plasmicStateName: "table.selectedRows"
+                  },
+                  {
+                    name: "selectedRowKeys",
+                    plasmicStateName: "table.selectedRowKeys"
+                  }
+                ],
+                [],
+                RichTable_Helpers ?? {},
+                child$Props
+              );
 
-                      $steps["invokeGlobalAction"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              args: [
-                                "success",
-                                (() => {
-                                  try {
-                                    return (
-                                      currentItem.name + " Team Created!!! "
-                                    );
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
-                                    }
-                                    throw e;
-                                  }
-                                })(),
-                                undefined,
-                                5
-                              ]
-                            };
-                            return $globalActions[
-                              "plasmic-antd5-config-provider.showNotification"
-                            ]?.apply(null, [...actionArgs.args]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["invokeGlobalAction"] != null &&
-                        typeof $steps["invokeGlobalAction"] === "object" &&
-                        typeof $steps["invokeGlobalAction"].then === "function"
-                      ) {
-                        $steps["invokeGlobalAction"] = await $steps[
-                          "invokeGlobalAction"
-                        ];
-                      }
-
-                      $steps["postgresCreate"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              dataOp: {
-                                sourceId: "8cdHi4ivRUEkK6qbegQevF",
-                                opId: "0bc71cbc-a7d0-4760-8b48-8bbd46159b26",
-                                userArgs: {
-                                  variables: [currentItem.name, currentItem.id]
-                                },
-                                cacheKey: null,
-                                invalidatedKeys: ["plasmic_refresh_all"],
-                                roleId: "f8970d3a-c1ae-4ba8-80dd-90e548ee70d6"
-                              }
-                            };
-                            return (async ({ dataOp, continueOnError }) => {
-                              try {
-                                const response = await executePlasmicDataOp(
-                                  dataOp,
-                                  {
-                                    userAuthToken:
-                                      dataSourcesCtx?.userAuthToken,
-                                    user: dataSourcesCtx?.user
-                                  }
-                                );
-                                await plasmicInvalidate(dataOp.invalidatedKeys);
-                                return response;
-                              } catch (e) {
-                                if (!continueOnError) {
-                                  throw e;
-                                }
-                                return e;
-                              }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["postgresCreate"] != null &&
-                        typeof $steps["postgresCreate"] === "object" &&
-                        typeof $steps["postgresCreate"].then === "function"
-                      ) {
-                        $steps["postgresCreate"] = await $steps[
-                          "postgresCreate"
-                        ];
-                      }
-
-                      $steps["goToTeams2Market"] = true
-                        ? (() => {
-                            const actionArgs = { destination: `/new-page` };
-                            return (({ destination }) => {
-                              if (
-                                typeof destination === "string" &&
-                                destination.startsWith("#")
-                              ) {
-                                document
-                                  .getElementById(destination.substr(1))
-                                  .scrollIntoView({ behavior: "smooth" });
-                              } else {
-                                __nextRouter?.push(destination);
-                              }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["goToTeams2Market"] != null &&
-                        typeof $steps["goToTeams2Market"] === "object" &&
-                        typeof $steps["goToTeams2Market"].then === "function"
-                      ) {
-                        $steps["goToTeams2Market"] = await $steps[
-                          "goToTeams2Market"
-                        ];
-                      }
-                    }}
-                  >
-                    <PlasmicImg__
-                      data-plasmic-name={"img"}
-                      data-plasmic-override={overrides.img}
-                      alt={""}
-                      className={classNames(sty.img)}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"auto"}
-                      loading={"lazy"}
-                      src={(() => {
-                        try {
-                          return currentItem.flag_url;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return undefined;
-                          }
-                          throw e;
-                        }
-                      })()}
-                    />
-
-                    <div
-                      data-plasmic-name={"text"}
-                      data-plasmic-override={overrides.text}
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text
-                      )}
-                    >
-                      <React.Fragment>
-                        {(() => {
-                          try {
-                            return currentItem.name;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "";
-                            }
-                            throw e;
-                          }
-                        })()}
-                      </React.Fragment>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+              return (
+                <RichTable
+                  data-plasmic-name={"table"}
+                  data-plasmic-override={overrides.table}
+                  {...child$Props}
+                />
+              );
+            })()}
+          </Stack__>
         </div>
       </div>
     </React.Fragment>
@@ -400,10 +406,10 @@ function PlasmicTeamCreate__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "navbar", "img", "text"],
+  root: ["root", "navbar", "teamPlayerCreate", "table"],
   navbar: ["navbar"],
-  img: ["img"],
-  text: ["text"]
+  teamPlayerCreate: ["teamPlayerCreate"],
+  table: ["table"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -411,8 +417,8 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   navbar: typeof Navbar;
-  img: typeof PlasmicImg__;
-  text: "div";
+  teamPlayerCreate: typeof TeamPlayerCreate;
+  table: typeof RichTable;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -493,8 +499,8 @@ export const PlasmicTeamCreate = Object.assign(
   {
     // Helper components rendering sub-elements
     navbar: makeNodeComponent("navbar"),
-    img: makeNodeComponent("img"),
-    text: makeNodeComponent("text"),
+    teamPlayerCreate: makeNodeComponent("teamPlayerCreate"),
+    table: makeNodeComponent("table"),
 
     // Metadata about props expected for PlasmicTeamCreate
     internalVariantProps: PlasmicTeamCreate__VariantProps,

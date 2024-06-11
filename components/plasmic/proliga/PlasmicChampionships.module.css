@@ -181,6 +181,7 @@
   width: 318px;
   height: 136px;
   margin-bottom: 0px;
+  cursor: pointer;
   flex-shrink: 0;
 }
 .img__lxqfa > picture > img {

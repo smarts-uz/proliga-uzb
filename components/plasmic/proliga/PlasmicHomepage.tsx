@@ -67,7 +67,7 @@ import {
 
 import Navbar from "../../Navbar"; // plasmic-import: TKT8XnZtrLZi/component
 import SearchComponent from "../../SearchComponent"; // plasmic-import: mmk_GiTXUtux/component
-import AvatarPlayer from "../../AvatarPlayer"; // plasmic-import: 4QnaRcOLXj0D/component
+import TeamPlayerCreate from "../../TeamPlayerCreate"; // plasmic-import: d7-gk_liJIPx/component
 import MessageCard from "../../MessageCard"; // plasmic-import: KNRpEkS9bXP0/component
 import { RichTable } from "@plasmicpkgs/plasmic-rich-components/skinny/rich-table";
 import { tableHelpers as RichTable_Helpers } from "@plasmicpkgs/plasmic-rich-components/skinny/rich-table";
@@ -98,11 +98,7 @@ export type PlasmicHomepage__OverridesType = {
   navbar?: Flex__<typeof Navbar>;
   heroSection?: Flex__<"div">;
   searchComponent?: Flex__<typeof SearchComponent>;
-  playersTable?: Flex__<"div">;
-  goa?: Flex__<"div">;
-  def?: Flex__<"div">;
-  mid?: Flex__<"div">;
-  str?: Flex__<"div">;
+  teamPlayerCreate?: Flex__<typeof TeamPlayerCreate>;
   table?: Flex__<typeof RichTable>;
   breakinNewsCards?: Flex__<typeof BreakinNewsCards>;
   footer?: Flex__<typeof Footer>;
@@ -313,124 +309,11 @@ function PlasmicHomepage__RenderFunc(props: {
                 }
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__ipYwg)}>
-                <Stack__
-                  as={"div"}
-                  data-plasmic-name={"playersTable"}
-                  data-plasmic-override={overrides.playersTable}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.playersTable)}
-                >
-                  <div
-                    data-plasmic-name={"goa"}
-                    data-plasmic-override={overrides.goa}
-                    className={classNames(projectcss.all, sty.goa)}
-                  >
-                    <AvatarPlayer
-                      className={classNames(
-                        "__wab_instance",
-                        sty.avatarPlayer__eYqn
-                      )}
-                    />
-                  </div>
-                  <Stack__
-                    as={"div"}
-                    data-plasmic-name={"def"}
-                    data-plasmic-override={overrides.def}
-                    hasGap={true}
-                    className={classNames(projectcss.all, sty.def)}
-                  >
-                    <AvatarPlayer
-                      className={classNames(
-                        "__wab_instance",
-                        sty.avatarPlayer__zHe2
-                      )}
-                    />
-
-                    <AvatarPlayer
-                      className={classNames(
-                        "__wab_instance",
-                        sty.avatarPlayer__gKg6U
-                      )}
-                    />
-
-                    <AvatarPlayer
-                      className={classNames(
-                        "__wab_instance",
-                        sty.avatarPlayer__gy4Be
-                      )}
-                    />
-
-                    <AvatarPlayer
-                      className={classNames(
-                        "__wab_instance",
-                        sty.avatarPlayer__fMyT
-                      )}
-                    />
-                  </Stack__>
-                  <Stack__
-                    as={"div"}
-                    data-plasmic-name={"mid"}
-                    data-plasmic-override={overrides.mid}
-                    hasGap={true}
-                    className={classNames(projectcss.all, sty.mid)}
-                  >
-                    <AvatarPlayer
-                      className={classNames(
-                        "__wab_instance",
-                        sty.avatarPlayer__scu4E
-                      )}
-                    />
-
-                    <AvatarPlayer
-                      className={classNames(
-                        "__wab_instance",
-                        sty.avatarPlayer__rwYkb
-                      )}
-                    />
-
-                    <AvatarPlayer
-                      className={classNames(
-                        "__wab_instance",
-                        sty.avatarPlayer__ytkgs
-                      )}
-                    />
-
-                    <AvatarPlayer
-                      className={classNames(
-                        "__wab_instance",
-                        sty.avatarPlayer__dwZcr
-                      )}
-                    />
-                  </Stack__>
-                  <Stack__
-                    as={"div"}
-                    data-plasmic-name={"str"}
-                    data-plasmic-override={overrides.str}
-                    hasGap={true}
-                    className={classNames(projectcss.all, sty.str)}
-                  >
-                    <AvatarPlayer
-                      className={classNames(
-                        "__wab_instance",
-                        sty.avatarPlayer__rJ1Bo
-                      )}
-                    />
-
-                    <AvatarPlayer
-                      className={classNames(
-                        "__wab_instance",
-                        sty.avatarPlayer__dLfj0
-                      )}
-                    />
-
-                    <AvatarPlayer
-                      className={classNames(
-                        "__wab_instance",
-                        sty.avatarPlayer___0Fap9
-                      )}
-                    />
-                  </Stack__>
-                </Stack__>
+                <TeamPlayerCreate
+                  data-plasmic-name={"teamPlayerCreate"}
+                  data-plasmic-override={overrides.teamPlayerCreate}
+                  className={classNames("__wab_instance", sty.teamPlayerCreate)}
+                />
               </div>
               <Stack__
                 as={"div"}
@@ -1807,11 +1690,7 @@ const PlasmicDescendants = {
     "navbar",
     "heroSection",
     "searchComponent",
-    "playersTable",
-    "goa",
-    "def",
-    "mid",
-    "str",
+    "teamPlayerCreate",
     "table",
     "breakinNewsCards",
     "footer"
@@ -1819,11 +1698,7 @@ const PlasmicDescendants = {
   navbar: ["navbar"],
   heroSection: ["heroSection"],
   searchComponent: ["searchComponent"],
-  playersTable: ["playersTable", "goa", "def", "mid", "str"],
-  goa: ["goa"],
-  def: ["def"],
-  mid: ["mid"],
-  str: ["str"],
+  teamPlayerCreate: ["teamPlayerCreate"],
   table: ["table"],
   breakinNewsCards: ["breakinNewsCards"],
   footer: ["footer"]
@@ -1836,11 +1711,7 @@ type NodeDefaultElementType = {
   navbar: typeof Navbar;
   heroSection: "div";
   searchComponent: typeof SearchComponent;
-  playersTable: "div";
-  goa: "div";
-  def: "div";
-  mid: "div";
-  str: "div";
+  teamPlayerCreate: typeof TeamPlayerCreate;
   table: typeof RichTable;
   breakinNewsCards: typeof BreakinNewsCards;
   footer: typeof Footer;
@@ -1909,11 +1780,7 @@ export const PlasmicHomepage = Object.assign(
     navbar: makeNodeComponent("navbar"),
     heroSection: makeNodeComponent("heroSection"),
     searchComponent: makeNodeComponent("searchComponent"),
-    playersTable: makeNodeComponent("playersTable"),
-    goa: makeNodeComponent("goa"),
-    def: makeNodeComponent("def"),
-    mid: makeNodeComponent("mid"),
-    str: makeNodeComponent("str"),
+    teamPlayerCreate: makeNodeComponent("teamPlayerCreate"),
     table: makeNodeComponent("table"),
     breakinNewsCards: makeNodeComponent("breakinNewsCards"),
     footer: makeNodeComponent("footer"),

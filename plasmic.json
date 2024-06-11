@@ -1861,6 +1861,32 @@
           "cssFilePath": "plasmic/proliga/PlasmicLogout.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "d7-gk_liJIPx",
+          "name": "TeamPlayerCreate",
+          "type": "managed",
+          "projectId": "tDWy3GXn2mzd9e2xUaPdmu",
+          "renderModuleFilePath": "plasmic/proliga/PlasmicTeamPlayerCreate.tsx",
+          "importSpec": {
+            "modulePath": "TeamPlayerCreate.tsx"
+          },
+          "cssFilePath": "plasmic/proliga/PlasmicTeamPlayerCreate.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "3fwpAay-2jFk",
+          "name": "AvatarPlayer",
+          "type": "managed",
+          "projectId": "tDWy3GXn2mzd9e2xUaPdmu",
+          "renderModuleFilePath": "plasmic/proliga/PlasmicAvatarPlayer.tsx",
+          "importSpec": {
+            "modulePath": "AvatarPlayer.tsx"
+          },
+          "cssFilePath": "plasmic/proliga/PlasmicAvatarPlayer.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
