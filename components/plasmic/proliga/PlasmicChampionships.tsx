@@ -498,9 +498,19 @@ function PlasmicChampionships__RenderFunc(props: {
                         ];
                       }
                     }}
-                    src={
-                      "https://upload.wikimedia.org/wikipedia/ru/thumb/f/f2/Premier_League_Logo.svg/1200px-Premier_League_Logo.svg.png"
-                    }
+                    src={(() => {
+                      try {
+                        return currentItem.flag;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()}
                   />
 
                   <div

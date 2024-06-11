@@ -97,6 +97,7 @@ export type PlasmicNavbar__OverridesType = {
   mainStack?: Flex__<"div">;
   logo?: Flex__<"div">;
   items?: Flex__<"div">;
+  composition?: Flex__<"div">;
   login?: Flex__<"div">;
   popover?: Flex__<typeof AntdPopover>;
   logout?: Flex__<typeof Logout>;
@@ -586,6 +587,52 @@ function PlasmicNavbar__RenderFunc(props: {
                 {"Clubs"}
               </div>
             </Reveal>
+            <Reveal
+              className={classNames("__wab_instance", sty.reveal__iJZbh)}
+              triggerOnce={true}
+            >
+              <div
+                data-plasmic-name={"composition"}
+                data-plasmic-override={overrides.composition}
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.composition
+                )}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["goToChampionships"] = true
+                    ? (() => {
+                        const actionArgs = { destination: `/competition` };
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
+                          }
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["goToChampionships"] != null &&
+                    typeof $steps["goToChampionships"] === "object" &&
+                    typeof $steps["goToChampionships"].then === "function"
+                  ) {
+                    $steps["goToChampionships"] = await $steps[
+                      "goToChampionships"
+                    ];
+                  }
+                }}
+              >
+                {"Composition"}
+              </div>
+            </Reveal>
           </Stack__>
         ) : null}
         <Stack__
@@ -773,10 +820,28 @@ function PlasmicNavbar__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "mainStack", "logo", "items", "login", "popover", "logout"],
-  mainStack: ["mainStack", "logo", "items", "login", "popover", "logout"],
+  root: [
+    "root",
+    "mainStack",
+    "logo",
+    "items",
+    "composition",
+    "login",
+    "popover",
+    "logout"
+  ],
+  mainStack: [
+    "mainStack",
+    "logo",
+    "items",
+    "composition",
+    "login",
+    "popover",
+    "logout"
+  ],
   logo: ["logo"],
-  items: ["items"],
+  items: ["items", "composition"],
+  composition: ["composition"],
   login: ["login", "popover", "logout"],
   popover: ["popover"],
   logout: ["logout"]
@@ -789,6 +854,7 @@ type NodeDefaultElementType = {
   mainStack: "div";
   logo: "div";
   items: "div";
+  composition: "div";
   login: "div";
   popover: typeof AntdPopover;
   logout: typeof Logout;
@@ -857,6 +923,7 @@ export const PlasmicNavbar = Object.assign(
     mainStack: makeNodeComponent("mainStack"),
     logo: makeNodeComponent("logo"),
     items: makeNodeComponent("items"),
+    composition: makeNodeComponent("composition"),
     login: makeNodeComponent("login"),
     popover: makeNodeComponent("popover"),
     logout: makeNodeComponent("logout"),

@@ -176,7 +176,7 @@
 }
 .img__lxqfa {
   position: relative;
-  object-fit: cover;
+  object-fit: fill;
   max-width: 100%;
   width: 318px;
   height: 136px;
@@ -185,7 +185,7 @@
   flex-shrink: 0;
 }
 .img__lxqfa > picture > img {
-  object-fit: cover;
+  object-fit: fill;
 }
 .text {
   position: relative;
